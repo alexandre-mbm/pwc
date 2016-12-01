@@ -1,0 +1,26 @@
+{
+    "name": "alexandre-mbm/pwc",
+    "description": "Paperwork Consolidator",
+    "type": "library",
+    "keywords": ["pdf", "images", "editor"],
+    "time": "2016-12-01",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre Magno",
+            "email": "alexandre.mbm@gmail.com"
+        }
+    ],
+   "support": {
+        "issues": "https://github.com/alexandre-mbm/pwc/issues",
+        "source": "https://github.com/alexandre-mbm/pwc"
+    },
+    "minimum-stability": "dev",
+    "require":
+    {
+        "php": ">=5.3.0",
+        "ext-imagick": "*",
+        "myokyawhtun/pdfmerger": "dev-master",
+        "tecnickcom/tcpdf": "^6.2"
+    }
+}
