@@ -2,5 +2,8 @@ composer.lock
 
 data
 odt
+out
+tmp
+zip
 
 vendor

@@ -1,7 +1,7 @@
 <?php
 
-require_once("PDFMerger/fpdf/fpdf.php");
-require_once("PDFMerger/fpdi/fpdi.php");
+require_once("vendor/myokyawhtun/pdfmerger/fpdf/fpdf.php");
+require_once("vendor/myokyawhtun/pdfmerger/fpdi/fpdi.php");
 
 class WaterMark
 {
@@ -74,8 +74,9 @@ class WaterMark
         if($y==-1)
             $y=$this->pdf->y;
             #$y=842;
-        if($this->pdf->angle!=0)
-            $this->pdf->_out('Q');
+        if (isset($this->pdf->angle) || property_exists($this->pdf, 'angle'))
+            if($this->pdf->angle!=0)
+                $this->pdf->_out('Q');
         $this->pdf->angle=$angle;
 
         if($angle!=0){
@@ -93,5 +94,16 @@ class WaterMark
 
 }
 
-WaterMark::applyAndSpit('eSocial_Demonstrativo_Recibo_Novembro_2016.pdf', 'eSocial_Demonstrativo_Recibo_Novembro_2016-copia2.pdf');
+$src = 'data';
+$tmp = 'tmp';
+
+$file_a = 'eSocial_Demonstrativo_Recibo_Novembro_2016.pdf';
+$file_b = 'eSocial_Demonstrativo_Recibo_Novembro_2016-copia2.pdf';
+
+WaterMark::applyAndSpit($src.'/'.$file_a, $tmp.'/'.$file_b);
+
+if (!copy($src.'/'.$file_a, $tmp.'/'.$file_a)) {
+    echo "falha ao copiar $file_a...\n";
+}
+
 ?>

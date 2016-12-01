@@ -1,12 +1,17 @@
 <?php
 
+$src = 'data';
+$tmp = 'tmp';
+
 function addPNG($name) {
+
+    global $src, $tmp;
 
     $pdf = new Imagick();
     $pdf->setFormat('pdf');
 
     $img = new imagick();
-    $img->readImage($name.'.png');
+    $img->readImage($src.'/'.$name.'.png');
 
     $w = 595;
     $h = 842;
@@ -19,7 +24,7 @@ function addPNG($name) {
 
     $pdf->addImage($img);
 
-    if (!$pdf->writeImages($name.'.pdf', true)) {
+    if (!$pdf->writeImages($tmp.'/'.$name.'.pdf', true)) {
         die('Could not write!');
     }
 

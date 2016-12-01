@@ -40,19 +40,28 @@ gd.so
 sudo pacman -Ss composer
 ```
 
+NÃO ESQUECER das dependências avulsas:
+
+```console
+$ mkdir zip
+$ php dep.php
+```
+
 ## Uso
 
 Passos para obtenção manual de resultados:
 
-```
-#rotatePDF($newfile,90);
-rotatePDF('final.pdf',180,12);
+```console
+$ mkdir data; cp FILES data/
+$ # assumindo nomes configurados
+$ # assumindo odt exportado em pdf
+$ mkdir tmp
 
-prop.php
-wmark.php
-rot.php
-merge.php
-rot.php
+$ php prop.php
+$ php wmark.php
+$ php rot.php
+$ php merge.php
+$ php rot.php 14  # assumindo verso da "folha de ponto" na página 14
 ```
 
 **Fontes de informação**

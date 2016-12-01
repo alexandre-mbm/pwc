@@ -1,7 +1,7 @@
 <?php
   
-require_once('TCPDF/tcpdf.php');
-require_once('TCPDF/tcpdi.php');
+require_once('vendor/tecnickcom/tcpdf/tcpdf.php');
+require_once('vendor/tecnickcom/tcpdf/tcpdi.php');
 
 function rotatePDF($file, $degrees, $page = 'all'){
 
@@ -68,17 +68,39 @@ function rotatePDF($file, $degrees, $page = 'all'){
 }
 
 $file = 'fl.pt.dez.pdf';
-$newfile = 'toRotate.pdf';
 
-if (!copy($file, $newfile)) {
-    echo "falha ao copiar $file...\n";
-    die;
+$src = 'data';
+$tmp = 'tmp';
+$out = 'out';
+
+if(isset($argv[1])) {
+
+    if(isset($argv[2])) {  # segundo parâmetro sugere inconsistência
+        echo "há algo errado com o parâmetro\n";
+        die;
+    }
+
+    if(ctype_digit($argv[1])) {
+        $param = intval($argv[1]);
+        rotatePDF($out.'/'.'final.pdf', 180, $param);
+    } else {
+        echo "parâmetro não é número de página\n";
+        die;
+    }
+
+} else {
+
+    $newfile = 'toRotate.pdf';
+
+    if (!copy($src.'/'.$file, $tmp.'/'.$newfile)) {
+        echo "falha ao copiar $file...\n";
+        die;
+    }
+
+    #rotatePDF($newfile,90,1);
+    #rotatePDF($newfile,-90,2);
+
+    rotatePDF($tmp.'/'.$newfile, 90);
 }
-
-#rotatePDF($newfile,90,1);
-#rotatePDF($newfile,-90,2);
-
-#rotatePDF($newfile,90);
-rotatePDF('final.pdf',180,16);
 
 ?>
