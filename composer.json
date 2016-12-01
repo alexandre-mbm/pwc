@@ -21,6 +21,66 @@
         "php": ">=5.3.0",
         "ext-imagick": "*",
         "myokyawhtun/pdfmerger": "dev-master",
-        "tecnickcom/tcpdf": "^6.2"
+        "tecnickcom/tcpdf": "^6.2",
+        "pauln/tcpdi": "master",
+        "pauln/tcpdi_parser": "master",
+        "fpdf/tpl": "1.2.3"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "pauln/tcpdi",
+                "version": "master",
+                "require":                 {
+                    "tecnickcom/tcpdf": "*"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/pauln/tcpdi/archive/master.zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pauln/tcpdi_parser",
+                "version": "master",
+                "require": {
+                    "tecnickcom/tcpdf": "*"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/pauln/tcpdi_parser/archive/master.zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "fpdf/tpl",
+                "version": "1.2.3",
+                "require": {
+                    "tecnickcom/tcpdf": "*"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://www.setasign.com/downloads/63411/FPDF_TPL-1.2.3.zip"
+                }
+            }
+        }
+    ],
+    "scripts": {
+        "post-package-install": [
+            "pwc\\Installer\\PostPackage::when_tcpdi_parser",
+            "pwc\\Installer\\PostPackage::when_fpdf_tpl",
+            "pwc\\Installer\\PostPackage::when_tcpdi"
+        ],
+        "post-package-update": "@post-package-install"
+    },
+    "autoload": {
+        "psr-4": {
+            "pwc\\Installer\\": "."
+        }
     }
 }
