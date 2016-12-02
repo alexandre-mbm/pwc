@@ -38,8 +38,8 @@ class PostPackage
     {
         $filename = substr($src, strrpos($src, '/') + 1);
         if(!copy($src,$dst))
-            echo "falhou para instalar $filename\n";
+            echo "\tFALHOU para instalar $filename\n\n";
         else
-            echo "$filename instalado!\n";
+            echo "\t$filename instalado!\n\n";
     }
 }
