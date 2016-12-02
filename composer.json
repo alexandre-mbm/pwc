@@ -19,6 +19,8 @@
     "require":
     {
         "php": ">=5.3.0",
+        "ext-exif": "*",
+        "ext-gd": "*",
         "ext-imagick": "*",
         "myokyawhtun/pdfmerger": "dev-master",
         "tecnickcom/tcpdf": "^6.2",

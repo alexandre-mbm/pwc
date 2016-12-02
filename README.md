@@ -18,6 +18,12 @@ Composer:
 
 [fpdf-license]: /myokyawhtun/PDFMerger/blob/master/fpdf/license.txt
 
+Packages "zip":
+
+- [tcpdi](https://github.com/pauln/tcpdi) ‒ Apache License v2.0
+- [tcpdi_parser](https://github.com/pauln/tcpdi_parser) ‒ LGPLv3
+- [FPDF_TPL](https://www.setasign.com/products/fpdi/downloads/#package-10102) ‒ Apache License v2.0
+
 **Fontes de exemplos**
 
 Deve-se verificar cada licença!
@@ -25,37 +31,14 @@ Deve-se verificar cada licença!
 - `rot.php` ‒ [How do I rotate all or specific pages in a PDF using PHP?](http://stackoverflow.com/questions/38111815/how-do-i-rotate-all-or-specific-pages-in-a-pdf-using-php)
 - `wmark.php` ‒ [FPDI/FPDF: Watermark and Print Multiple Pages](http://stackoverflow.com/questions/10468478/fpdi-fpdf-watermark-and-print-multiple-pages)
 
-**Notas sobre instalação**
-
-Ajustes possivelmente necessários para tudo funcionar: 
-
-```
-php -i |grep php\.ini
-
-$ yaourt -Ss php-gd
-
-exif.so
-gd.so
-
-sudo pacman -Ss composer
-```
-
-NÃO ESQUECER das dependências avulsas:
-
-```console
-$ mkdir zip
-$ php dep.php
-```
-
 ## Uso
 
 Passos para obtenção manual de resultados:
 
 ```console
-$ mkdir data; cp FILES data/
+$ cp FILES data/
 $ # assumindo nomes configurados
 $ # assumindo odt exportado em pdf
-$ mkdir tmp
 
 $ php prop.php
 $ php wmark.php
