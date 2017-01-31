@@ -49,9 +49,9 @@ $ php rot.php 14  # assumindo verso da "folha de ponto" na página 14
 
 **Fontes de informação**
 
-- [Feriados Municipais de Natal (RN)][feriados]
-- [Calendário do Ano 2016][calendário]
+- [Portaria Nº 369, de 29 de novembro de 2016][nacional]
+- [Diário Oficial do Município, de 2 de janeiro de 2017][municipal]
 
-[feriados]: http://www.feriadosmunicipais.com.br/rio-grande-do-norte/natal/
-[calendário]: http://www.calendario-365.com.br/calend%C3%A1rio-2016.html
+[nacional]: http://pesquisa.in.gov.br/imprensa/servlet/INPDFViewer?jornal=1&pagina=78&data=30/11/2016&captchafield=firistAccess
+[municipal]: http://portal.natal.rn.gov.br/_anexos/publicacao/dom/dom_20170102_57b612fa85cb4d70525ef7a656747a51.pdf
 
