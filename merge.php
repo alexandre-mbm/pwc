@@ -15,12 +15,10 @@ function temporize($file) {
 
 temporize('relatorio.pdf');
 temporize('2a Via de Fatura.pdf');
-temporize('GuiaPagamento_14326485515_300620171511472361.PDF');  # EDIT
-temporize('eSocial_Demonstrativo_Recibo_Junho-2017.pdf');  # EDIT
-#temporize('Auxílio Transporte.odt');  # TODO
+temporize('GuiaPagamento.PDF');
+temporize('eSocial_Demonstrativo.pdf');
+temporize('Auxílio Transporte.pdf');
 temporize('Fatura Net.pdf');
-
-#ESocial_Relatorio_Consolidado_Remuneracoes_Junho-2017.pdf
 
 chdir($tmp);
 
@@ -32,14 +30,14 @@ $pdf->addPDF('toRotate.pdf', '1')
 	->addPDF('CAERN.pdf')
 	->addPDF('2a Via de Fatura.pdf', '1')
 	->addPDF('COSERN.pdf')
-	->addPDF('eSocial_Demonstrativo_Recibo_Junho-2017.pdf', '1')  # EDIT
+	->addPDF('eSocial_Demonstrativo.pdf', '1')
 	->addPDF('../blank.pdf')
-	->addPDF('eSocial_Demonstrativo_Recibo_Junho-2017.pdf', '2')  # EDIT
+	->addPDF('eSocial_Demonstrativo.pdf', '2')
 	->addPDF('../blank.pdf')
-	->addPDF('GuiaPagamento_14326485515_300620171511472361.PDF')  # EDIT
+	->addPDF('GuiaPagamento.PDF')
 	->addPDF('comprovante.pdf')
-	#->addPDF('Auxílio Transporte.odt')
-	#->addPDF('../blank.pdf')
+	->addPDF('Auxílio Transporte.pdf')
+	->addPDF('../blank.pdf')
 	->addPDF('Fatura Net.pdf', '1')
 	->addPDF('NET.pdf')
 	->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
