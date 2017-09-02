@@ -2,3 +2,6 @@ composer.lock
 
 odt
 vendor
+
+*.bak
+*.so

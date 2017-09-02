@@ -59,7 +59,7 @@ function rotatePDF($file, $degrees, $page = 'all'){
     if(rename($file,"file.bak")){
         $result = $pdf->Output($out, "F"); 
         if($result == "" ){
-            echo "ok";
+            echo "rotated\n";
         }
     }else{
         echo "Failed to rename old PDF";
@@ -67,7 +67,7 @@ function rotatePDF($file, $degrees, $page = 'all'){
     }
 }
 
-$file = 'fl.pt.dez.pdf';
+$file = 'Folha de ponto.pdf';
 
 $src = 'data';
 $tmp = 'tmp';

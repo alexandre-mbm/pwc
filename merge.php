@@ -15,35 +15,34 @@ function temporize($file) {
 
 temporize('relatorio.pdf');
 temporize('2a Via de Fatura.pdf');
-temporize('GuiaPagamento_14326485515_281120160220407802.pdf');
-temporize('rec.vt.dez.pdf');
+temporize('GuiaPagamento_14326485515_300620171511472361.PDF');  # EDIT
+temporize('eSocial_Demonstrativo_Recibo_Junho-2017.pdf');  # EDIT
+#temporize('Auxílio Transporte.odt');  # TODO
 temporize('Fatura Net.pdf');
+
+#ESocial_Relatorio_Consolidado_Remuneracoes_Junho-2017.pdf
 
 chdir($tmp);
 
 $pdf = new PDFMerger;
 
-$pdf->addPDF('relatorio.pdf')
-	->addPDF('caern.pdf')
+$pdf->addPDF('toRotate.pdf', '1')
+    ->addPDF('toRotate.pdf', '2')
+	->addPDF('relatorio.pdf')
+	->addPDF('CAERN.pdf')
 	->addPDF('2a Via de Fatura.pdf', '1')
-	->addPDF('cosern.pdf')
-	->addPDF('eSocial_Demonstrativo_Recibo_Novembro_2016.pdf', '1')
+	->addPDF('COSERN.pdf')
+	->addPDF('eSocial_Demonstrativo_Recibo_Junho-2017.pdf', '1')  # EDIT
 	->addPDF('../blank.pdf')
-	->addPDF('eSocial_Demonstrativo_Recibo_Novembro_2016.pdf', '2')
+	->addPDF('eSocial_Demonstrativo_Recibo_Junho-2017.pdf', '2')  # EDIT
 	->addPDF('../blank.pdf')
-	#->addPDF('eSocial_Demonstrativo_Recibo_Novembro_2016-copia.pdf', '1')
-	#->addPDF('blank.pdf')
-	->addPDF('eSocial_Demonstrativo_Recibo_Novembro_2016-copia2.pdf', '2')
-	->addPDF('../blank.pdf')
-	->addPDF('GuiaPagamento_14326485515_281120160220407802.pdf')
-	->addPDF('Comprovante.pdf')
-	->addPDF('toRotate.pdf', '1')
-	->addPDF('toRotate.pdf', '2')
-	->addPDF('rec.vt.dez.pdf')
-	->addPDF('../blank.pdf')
+	->addPDF('GuiaPagamento_14326485515_300620171511472361.PDF')  # EDIT
+	->addPDF('comprovante.pdf')
+	#->addPDF('Auxílio Transporte.odt')
+	#->addPDF('../blank.pdf')
 	->addPDF('Fatura Net.pdf', '1')
 	->addPDF('NET.pdf')
-	->merge('file', '../'.$out.'/'.'final.pdf');
+	->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
 
 # TODO watemark
 

@@ -30,9 +30,9 @@ function addPNG($name) {
 
 }
 
-addPNG('caern');
-addPNG('cosern');
-addPNG('Comprovante');
+addPNG('CAERN');
+addPNG('COSERN');
+addPNG('comprovante');
 addPNG('NET');
 
 ?>

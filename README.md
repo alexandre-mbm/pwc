@@ -40,11 +40,12 @@ $ cp FILES data/
 $ # assumindo nomes configurados
 $ # assumindo odt exportado em pdf
 
-$ php prop.php
-$ php wmark.php
+$ export PHP_INI_SCAN_DIR="$(pwd)"
+
+$ php pro.php
 $ php rot.php
 $ php merge.php
-$ php rot.php 14  # assumindo verso da "folha de ponto" na página 14
+$ php rot.php 2  # assumindo verso da "folha de ponto" na página 2
 ```
 
 **Fontes de informação**
@@ -55,3 +56,14 @@ $ php rot.php 14  # assumindo verso da "folha de ponto" na página 14
 [nacional]: http://pesquisa.in.gov.br/imprensa/servlet/INPDFViewer?jornal=1&pagina=78&data=30/11/2016&captchafield=firistAccess
 [municipal]: http://portal.natal.rn.gov.br/_anexos/publicacao/dom/dom_20170102_57b612fa85cb4d70525ef7a656747a51.pdf
 
+## Dicas de instalação
+
+**Alwaysdata**
+
+```console
+$ # ls $(php-config --extension-dir)
+$ ad_install_pecl imagick
+$ export PHP_INI_SCAN_DIR="$(pwd)"
+$ # php --ini
+$ composer install
+```
