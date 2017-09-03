@@ -16,7 +16,7 @@ function temporize($file) {
 temporize('relatorio.pdf');
 temporize('2a Via de Fatura.pdf');
 temporize('GuiaPagamento.PDF');
-temporize('eSocial_Demonstrativo.pdf');
+temporize('eSocial_Demonstrativo_Recibo.pdf');
 temporize('Auxílio Transporte.pdf');
 temporize('Fatura Net.pdf');
 
@@ -35,7 +35,7 @@ $pdf->addPDF('toRotate.pdf', '1')
 	->addPDF('eSocial_Demonstrativo.pdf', '2')
 	->addPDF('../blank.pdf')
 	->addPDF('GuiaPagamento.PDF')
-	->addPDF('comprovante.pdf')
+	->addPDF('Comprovante.pdf')
 	->addPDF('Auxílio Transporte.pdf')
 	->addPDF('../blank.pdf')
 	->addPDF('Fatura Net.pdf', '1')

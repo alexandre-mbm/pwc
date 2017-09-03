@@ -32,7 +32,7 @@ function addPNG($name) {
 
 addPNG('CAERN');
 addPNG('COSERN');
-addPNG('comprovante');
+addPNG('Comprovante');
 addPNG('NET');
 
 ?>
