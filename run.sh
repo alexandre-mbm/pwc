@@ -2,7 +2,7 @@
 
 export PHP_INI_SCAN_DIR="$(pwd)"
 
-php pro.php
-php rot.php
-php merge.php
-php rot.php 2
+php pro.php 2>/dev/null
+php rot.php 2>/dev/null
+php merge.php 2>/dev/null
+php rot.php 2 2>/dev/null

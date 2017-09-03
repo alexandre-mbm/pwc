@@ -5,27 +5,33 @@ $tmp = 'tmp';
 
 function addPNG($name) {
 
-    global $src, $tmp;
+    try{
 
-    $pdf = new Imagick();
-    $pdf->setFormat('pdf');
+        global $src, $tmp;
 
-    $img = new imagick();
-    $img->readImage($src.'/'.$name.'.png');
+        $pdf = new Imagick();
+        $pdf->setFormat('pdf');
 
-    $w = 595;
-    $h = 842;
-    $x = ($w-$img->getImageWidth())/2;
-    $y = ($h-$img->getImageHeight())/2;
-    $img->setImagePage($w, $h, $x, $y);
+        $img = new imagick();
+        $img->readImage($src.'/'.$name.'.png');
 
-    $img->setImageFormat('png');
-    $img->setImageCompressionQuality(100);
+        $w = 595;
+        $h = 842;
+        $x = ($w-$img->getImageWidth())/2;
+        $y = ($h-$img->getImageHeight())/2;
+        $img->setImagePage($w, $h, $x, $y);
 
-    $pdf->addImage($img);
+        $img->setImageFormat('png');
+        $img->setImageCompressionQuality(100);
 
-    if (!$pdf->writeImages($tmp.'/'.$name.'.pdf', true)) {
-        die('Could not write!');
+        $pdf->addImage($img);
+
+        if (!$pdf->writeImages($tmp.'/'.$name.'.pdf', true)) {
+            die('Could not write!');
+        }
+
+    } catch (ImagickException $e) {
+        #echo $e->getMessage() . "\n";
     }
 
 }

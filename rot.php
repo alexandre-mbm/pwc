@@ -59,7 +59,7 @@ function rotatePDF($file, $degrees, $page = 'all'){
     if(rename($file,"file.bak")){
         $result = $pdf->Output($out, "F"); 
         if($result == "" ){
-            echo "rotated\n";
+            #echo "rotated\n";
         }
     }else{
         echo "Failed to rename old PDF";
@@ -74,6 +74,9 @@ $tmp = 'tmp';
 $out = 'out';
 
 if(isset($argv[1])) {
+
+    if (!file_exists( __DIR__ . '/' . $src . '/' . 'Folha de ponto.pdf'))
+        die;
 
     if(isset($argv[2])) {  # segundo parâmetro sugere inconsistência
         echo "há algo errado com o parâmetro\n";
@@ -93,7 +96,7 @@ if(isset($argv[1])) {
     $newfile = 'toRotate.pdf';
 
     if (!copy($src.'/'.$file, $tmp.'/'.$newfile)) {
-        echo "falha ao copiar $file...\n";
+        #echo "falha ao copiar $file...\n";
         die;
     }
 
