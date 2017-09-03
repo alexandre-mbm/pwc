@@ -25,7 +25,7 @@ chdir($tmp);
 $pdf = new PDFMerger;
 
 try {
-    if (!file_exists( __DIR__ . '/' . $src . '/' . 'Folha de ponto.pdf'))
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Folha de ponto.pdf'))
 	    throw new Exception('Folha de ponto.pdf não existe');
     if (!file_exists('toRotate.pdf'))
 	    throw new Exception('toRotate.pdf não foi gerado');
@@ -49,9 +49,9 @@ try {
 }
 
 try {
-    if (!file_exists( __DIR__ . '/' . $src . '/' . 'COSERN.png'))
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'COSERN.png'))
 	    throw new Exception('COSERN.png não existe');
-    if (!file_exists('2a Via de Fatura.pdf'))
+    if (!file_exists(__DIR__ . '/' . $src . '/' . '2a Via de Fatura.pdf'))
 	    throw new Exception('2a Via de Fatura.pdf não existe');
     if (!file_exists('COSERN.pdf'))
 	    throw new Exception('COSERN.pdf não foi gerado');
@@ -107,7 +107,12 @@ try {
     echo $e->getMessage() . "\n";
 }
 
-$pdf->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
+try {
+    $pdf->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
+    echo "\nDone!\n";
+} catch (Exception $e) {
+    echo "\n" . $e->getMessage() . "\n";
+}
 
 # TODO watemark
 
