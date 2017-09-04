@@ -17,8 +17,15 @@ temporize('relatorio.pdf');
 temporize('2a Via de Fatura.pdf');
 temporize('GuiaPagamento.PDF');
 temporize('eSocial_Demonstrativo_Recibo.pdf');
+temporize('ESocial_Relatorio_Consolidado.pdf');
 temporize('Auxílio Transporte.pdf');
 temporize('Fatura Net.pdf');
+temporize('Aviso prévio.pdf');
+temporize('Contrato.pdf');
+temporize('Extra.pdf');
+temporize('Aviso de férias.pdf');
+temporize('Recibo_Ferias.pdf');
+temporize('recibo.pdf');
 
 chdir($tmp);
 
@@ -73,6 +80,15 @@ try {
 }
 
 try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'ESocial_Relatorio_Consolidado.pdf'))
+	    throw new Exception('ESocial_Relatorio_Consolidado.pdf não existe');
+    $pdf->addPDF('ESocial_Relatorio_Consolidado.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
     if (!file_exists(__DIR__ . '/' . $src . '/' . 'Comprovante.png'))
 	    throw new Exception('Comprovante.png não existe');
     if (!file_exists(__DIR__ . '/' . $src . '/' . 'GuiaPagamento.PDF'))
@@ -108,8 +124,62 @@ try {
 }
 
 try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Aviso prévio.pdf'))
+	    throw new Exception('Aviso prévio.pdf não existe');
+    $pdf->addPDF('Aviso prévio.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Contrato.pdf'))
+	    throw new Exception('Contrato.pdf não existe');
+    $pdf->addPDF('Contrato.pdf', '1')
+        ->addPDF('Contrato.pdf', '2');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Extra.pdf'))
+	    throw new Exception('Extra.pdf não existe');
+    $pdf->addPDF('Extra.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Aviso de férias.pdf'))
+	    throw new Exception('Aviso de férias.pdf não existe');
+    $pdf->addPDF('Aviso de férias.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Recibo_Ferias.pdf'))
+	    throw new Exception('Recibo_Ferias.pdf não existe');
+    $pdf->addPDF('Recibo_Ferias.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
+    if (!file_exists(__DIR__ . '/' . $src . '/' . 'recibo.pdf'))
+	    throw new Exception('recibo.pdf não existe');
+    $pdf->addPDF('recibo.pdf')
+        ->addPDF('../blank.pdf');
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+try {
     $pdf->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
-    echo "O arquivo foi gerado!\n";
+    echo "O documento está pronto!\n";
 } catch (Exception $e) {
     echo $e->getMessage() . "\n";
 }
