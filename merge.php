@@ -109,9 +109,9 @@ try {
 
 try {
     $pdf->merge('file', __DIR__ . '/' . $out . '/' . 'final.pdf');
-    echo "\nDone!\n";
+    echo "O arquivo foi gerado!\n";
 } catch (Exception $e) {
-    echo "\n" . $e->getMessage() . "\n";
+    echo $e->getMessage() . "\n";
 }
 
 # TODO watemark
