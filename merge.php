@@ -5,6 +5,8 @@ $tmp = 'tmp';
 $out = 'out';
 $src = 'data';
 
+$indexes = array("", "-1", "-2");
+
 function temporize($file) {
     global $src, $tmp;
     if (!copy($src.'/'.$file, $tmp.'/'.$file)) {
@@ -16,13 +18,17 @@ function temporize($file) {
 temporize('relatorio.pdf');
 temporize('2a Via de Fatura.pdf');
 temporize('GuiaPagamento.PDF');
-temporize('eSocial_Demonstrativo_Recibo.pdf');
+
+foreach ($indexes as $i) {
+    temporize("eSocial_Demonstrativo_Recibo$i.pdf");
+    temporize("Extra$i.pdf");
+}
+
 temporize('ESocial_Relatorio_Consolidado.pdf');
 temporize('Auxílio Transporte.pdf');
 temporize('Fatura Net.pdf');
 temporize('Aviso prévio.pdf');
 temporize('Contrato.pdf');
-temporize('Extra.pdf');
 temporize('Aviso de férias.pdf');
 temporize('Recibo_Ferias.pdf');
 temporize('recibo.pdf');
@@ -69,15 +75,28 @@ try {
     echo $e->getMessage() . "\n";
 }
 
-try {
-    if (!file_exists(__DIR__ . '/' . $src . '/' . 'eSocial_Demonstrativo_Recibo.pdf'))
-	    throw new Exception('eSocial_Demonstrativo_Recibo.pdf não existe');
-    $pdf->addPDF('eSocial_Demonstrativo_Recibo.pdf', '1')
-        ->addPDF('../blank.pdf')
-        ->addPDF('eSocial_Demonstrativo_Recibo.pdf', '2')
-        ->addPDF('../blank.pdf');
-} catch (Exception $e) {
-    echo $e->getMessage() . "\n";
+foreach ($indexes as $i) {
+
+    try {
+        if (!file_exists(__DIR__ . '/' . $src . '/' . "eSocial_Demonstrativo_Recibo$i.pdf"))
+	        throw new Exception("eSocial_Demonstrativo_Recibo$i.pdf não existe");
+        $pdf->addPDF("eSocial_Demonstrativo_Recibo$i.pdf", '1')
+	    ->addPDF('../blank.pdf')
+	    ->addPDF("eSocial_Demonstrativo_Recibo$i.pdf", '2')
+	    ->addPDF('../blank.pdf');
+    } catch (Exception $e) {
+        echo $e->getMessage() . "\n";
+    }
+
+    try {
+        if (!file_exists(__DIR__ . '/' . $src . '/' . "Extra$i.pdf"))
+	        throw new Exception("Extra$i.pdf não existe");
+        $pdf->addPDF("Extra$i.pdf")
+            ->addPDF('../blank.pdf');
+    } catch (Exception $e) {
+        echo $e->getMessage() . "\n";
+    }
+
 }
 
 try {
@@ -134,15 +153,6 @@ try {
 	    throw new Exception('Contrato.pdf não existe');
     $pdf->addPDF('Contrato.pdf', '1')
         ->addPDF('Contrato.pdf', '2');
-} catch (Exception $e) {
-    echo $e->getMessage() . "\n";
-}
-
-try {
-    if (!file_exists(__DIR__ . '/' . $src . '/' . 'Extra.pdf'))
-	    throw new Exception('Extra.pdf não existe');
-    $pdf->addPDF('Extra.pdf')
-        ->addPDF('../blank.pdf');
 } catch (Exception $e) {
     echo $e->getMessage() . "\n";
 }
